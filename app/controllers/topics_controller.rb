@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   def show
-    render json: @topic
+    render json: @topic, include: ['comments.user']
   end
 
   # POST /topics

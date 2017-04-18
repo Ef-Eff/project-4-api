@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   scope :api do
     resources :comments
     resources :subtitles
-    resources :topics
+    resources :topics, except: [:create, :update, :delete]
     resources :users
 
     post '/register', to: 'authentications#register'
