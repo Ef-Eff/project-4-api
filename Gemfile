@@ -20,7 +20,7 @@ gem 'puma', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 gem 'httparty'
-
+gem 'jwt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

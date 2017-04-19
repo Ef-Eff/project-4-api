@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   # GET /topics
   def index
@@ -10,7 +11,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   def show
-    render json: @topic, include: ['comments.user']
+    render json: @topic, include: ['comments.user', 'subtitles']
   end
 
   # POST /topics

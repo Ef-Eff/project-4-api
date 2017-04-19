@@ -1,5 +1,6 @@
 class SubtitlesController < ApplicationController
   before_action :set_subtitle, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   # GET /subtitles
   def index
@@ -16,6 +17,7 @@ class SubtitlesController < ApplicationController
   # POST /subtitles
   def create
     @subtitle = Subtitle.new(subtitle_params)
+    @subtitle.user = current_user
 
     if @subtitle.save
       render json: @subtitle, status: :created, location: @subtitle

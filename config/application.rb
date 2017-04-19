@@ -33,5 +33,7 @@ module Project4
         resource '*', :headers => :any, :methods => :any
       end
     end
+
+    config.eager_load_paths << Rails.root.join('lib')
   end
 end

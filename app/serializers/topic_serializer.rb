@@ -4,7 +4,7 @@ class TopicSerializer < ActiveModel::Serializer
   has_many :subtitles
 
   def selected_subtitle
-    subtitle = object.subtitles[0]
+    subtitle = object.subtitles.sort_by { |hash| hash["rating"] }[0]
     if subtitle then subtitle["title"] else "Be the first to suggest a subtitle!" end
   end
 end
