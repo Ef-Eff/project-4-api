@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(Uploader.image(comment_params))
     @comment.user = current_user
 
     if @comment.save
@@ -48,6 +48,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:topic_id, :user_id, :body, :image)
+      params.require(:comment).permit(:topic_id, :user_id, :body, :base64)
     end
 end
