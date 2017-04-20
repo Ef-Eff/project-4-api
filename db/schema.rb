@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418092848) do
+ActiveRecord::Schema.define(version: 20170420132505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 20170418092848) do
     t.string   "profile_pic"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "voter_id"
+    t.string   "subject_type"
+    t.integer  "subject_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["subject_type", "subject_id"], name: "index_votes_on_subject_type_and_subject_id", using: :btree
   end
 
   add_foreign_key "comments", "topics"
