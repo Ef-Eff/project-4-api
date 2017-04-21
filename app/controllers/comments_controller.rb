@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
-    if @comment.update(comment_params)
+    if @comment.update(Uploader.image(comment_params))
       render json: @comment
     else
       render json: @comment.errors, status: :unprocessable_entity

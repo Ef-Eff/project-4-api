@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-
   scope :api do
     resources :comments
     resources :subtitles
     resources :topics, except: [:create, :update, :delete]
     resources :users
-    resources :votes
+    resources :votes, except: [:show, :index]
+    resources :pm, except: [:update, :delete, :index]
 
     post '/register', to: 'authentications#register'
     post '/login', to: 'authentications#login'

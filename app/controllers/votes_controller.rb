@@ -17,6 +17,7 @@ class VotesController < ApplicationController
   def create
     vote_params[:value] = 1
     @vote = Vote.new(vote_params)
+    @vote.voter = current_user
 
     if @vote.save
       render json: @vote, status: :created, location: @vote

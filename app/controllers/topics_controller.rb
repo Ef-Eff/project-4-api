@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   def show
-    render json: @topic, include: ['comments.user', 'subtitles.user']
+    render json: @topic, include: ['comments.user', 'subtitles.user', 'comments.votes']
   end
 
   # POST /topics
