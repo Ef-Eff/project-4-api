@@ -1,4 +1,4 @@
-class PMsController < ApplicationController
+class PmsController < ApplicationController
   before_action :set_pm, only: [:show, :update, :destroy]
 
   # GET /pms

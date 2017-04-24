@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :topics, except: [:create, :update, :delete]
     resources :users
     resources :votes, except: [:show, :index]
-    resources :pm, except: [:update, :delete, :index]
+    resources :pms, except: [:update, :delete, :index]
 
     post '/register', to: 'authentications#register'
     post '/login', to: 'authentications#login'
