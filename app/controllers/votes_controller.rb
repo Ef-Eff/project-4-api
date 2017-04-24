@@ -15,7 +15,7 @@ class VotesController < ApplicationController
 
   # POST /votes
   def create
-    vote_params[:value] = 1
+    
     @vote = Vote.new(vote_params)
     @vote.voter = current_user
 
