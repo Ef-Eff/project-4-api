@@ -6,4 +6,20 @@ class Logic
       false
     end
   end
+
+  def self.already_voted? vote_type, vote_id, users_id
+    if vote_type == 'Comment'
+      if Comment.find(vote_id).votes.find { |vote| vote.voter_id == users_id }
+        return true
+      else
+        return false
+      end
+    else
+      if Subtitle.find(vote_id).votes.find { |vote| vote.voter_id == users_id }
+        return true
+      else
+        return false
+      end
+    end
+  end
 end

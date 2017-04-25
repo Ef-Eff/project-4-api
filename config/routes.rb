@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :users
     resources :votes, except: [:show, :index]
     resources :pms, except: [:update, :delete, :index]
+    resources :messages
 
     post '/register', to: 'authentications#register'
     post '/login', to: 'authentications#login'

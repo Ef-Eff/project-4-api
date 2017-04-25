@@ -15,11 +15,12 @@ class VotesController < ApplicationController
 
   # POST /votes
   def create
-    
+
     @vote = Vote.new(vote_params)
     @vote.voter = current_user
-
-    if @vote.save
+    if Logic.already_voted?(@vote.subject_type, @vote.subject_id, current_user.id)
+      render json: { errors: ["You already voted on that!"]}, status: 400
+    elsif @vote.save
       render json: @vote, status: :created, location: @vote
     else
       render json: @vote.errors, status: :unprocessable_entity
