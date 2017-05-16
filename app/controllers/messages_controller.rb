@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     @messages_sent = Message.where(sender: current_user)
     @messages_received = Message.where(receiver: current_user)
-    
+
     render json: { messages_sent: @messages_sent, messages_received: @messages_received }
   end
 
